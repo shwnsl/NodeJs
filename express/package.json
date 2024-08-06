@@ -1,0 +1,17 @@
+{
+  "name": "front_dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "async": "^3.2.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}

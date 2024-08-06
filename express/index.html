@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>안녕 하 세오?</h1>
+    <button id="greeting"></button>
+    <ul id="users"></ul>
+    <!-- <script>
+        let greeting = document.getElementById('greeting')
+        greeting.addEventListener('click',sayHello)
+        function sayHello() {
+            fetch('http://localhost:3000/greet')
+            .then(response => response.json())
+            .then(json => document.querySelector('h1').innerHTML = json.message)
+            .catch(e => console.error(e))
+        }
+    </script> -->
+    <script>
+        document.addEventListener('DOMcontentLoaded', () => {
+            const ul = document.querySelector('#users')
+            const url = 'http://localhost:3333/users';
+            fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw Error(response.statusText)
+                }
+            })
+            .then(users => {
+                if (Array.isArray(users)) {
+                    users.forEach(user => {
+                        let li = document.createElement('li')
+                        li.textContent = `${user.name} : ${user.email}`
+                        ul.appendChild(li)
+                    });
+                } else {
+                    throw new Error('데이터가 배열이 아님')
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        })
+    </script>
+</body>
+</html>
