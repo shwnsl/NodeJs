@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>안녕 시발~~~~~~</h1>
+    
+    <p><%= '안녕' + '병신들아?' %></p>
+    <p><%= 5 + 2 %></p>
+    <p><%= true ? 'ture' : 'false' %></p>
+    <p><%= false ? 'ture' : 'false' %></p>
+    <p><%= "<h3>hii</h3>" %></p>
+    <p><%- "<h3>hii</h3>" %></p>
+    <div>
+        <% let str = '안영?' %>
+        <%= str %>
+    </div>
+    <div>
+        <% if (true) { %>
+            <h2>시봉봉</h2>
+        <% } %>  
+    </div>
+    <div>
+        <% if (false) { %>
+            <h2>안나옴</h2>
+        <% } %>  
+    </div>
+    <div>
+        <% if (true) { %>
+            <div>true</div>
+        <% } else { %>
+            <div>false</div> 
+        <% } %> 
+    </div>
+    <div>
+        <% for( let i = 0; i < 5; i++ ) { %>
+            <div><a href="/order/<%= i %>">test <%= i  %>로</a></div>
+        <% } %>
+    </div>
+    <div>
+        <% let arr = ['apple','banana','kiwi'] %>
+        <% arr.forEach((fruit) => { %>
+            <h3><%= fruit  %>이데</h3>
+        <% }) %>
+    </div>
+    <div>
+        <% let arr2 = ['map1','map2','map3'] %>
+        <% arr2.map((val) => { %>
+            <h3><%= val %>이다</h3>
+        <% }) %>
+    </div>
+    <ul>
+        <% for(let person of people) { %>
+            <li><%= person.name  %></li>
+        <% } %>
+    </ul>
+    <div>
+        <% let kim = people[0].name %>
+        <%= kim  %>
+    </div>
+    <div class="container">
+        <h1>List</h1>
+        <form action="/addTask" method="POST">
+            <input type="text" name="newTask" placeholder="할 일 목록 추가">
+            <button type="submit">add</button>
+        </form>
+        <ul>
+            <% tasks.forEach(task => { %>
+            <li>
+                <%= task %>
+                <form action="/deleteTask" method="POST">
+                    <input type="hidden" name="tasks" value="<%= task %>">
+                    <button type="submit">delete</button>
+                </form>
+            </li>
+            <% }) %>
+        </ul>
+        <ul>
+            <% users.forEach(user => { %>
+                <li class="<%= user.role %>">
+                    name : <%= user.name %> / age : <%= user.age %>
+                    <%= user.age >= 18 ? 'pass' : 'reject'  %>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
